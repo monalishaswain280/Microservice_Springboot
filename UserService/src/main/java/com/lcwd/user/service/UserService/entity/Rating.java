@@ -15,9 +15,20 @@ public class Rating {
 	private int hotelId;
 	private int rating;
 	private String feedback;
+	private Hotel hotel;
 	
 	public Rating() {
 		
+	}
+
+	public Rating(int ratingId, int userId, int hotelId, int rating, String feedback, Hotel hotel) {
+		super();
+		this.ratingId = ratingId;
+		this.userId = userId;
+		this.hotelId = hotelId;
+		this.rating = rating;
+		this.feedback = feedback;
+		this.hotel = hotel;
 	}
 
 	public int getRatingId() {
@@ -60,5 +71,14 @@ public class Rating {
 		this.feedback = feedback;
 	}
 
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	
 	
 }
