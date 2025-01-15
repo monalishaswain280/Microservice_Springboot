@@ -1,84 +1,88 @@
 package com.lcwd.user.service.UserService.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Rating {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ratingId;
-	private int userId;
-	private int hotelId;
-	private int rating;
-	private String feedback;
-	private Hotel hotel;
-	
-	public Rating() {
-		
-	}
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ratingId;
+    private int userId;
+    @Column(name = "hotel_id")
+    private int hotelId;
+    private int rating;
+    private String feedback;
+    
+    @ManyToOne
+    @JoinColumn(name = "hotel_id", insertable = false, updatable = false)
+    private Hotel hotel;
 
-	public Rating(int ratingId, int userId, int hotelId, int rating, String feedback, Hotel hotel) {
-		super();
-		this.ratingId = ratingId;
-		this.userId = userId;
-		this.hotelId = hotelId;
-		this.rating = rating;
-		this.feedback = feedback;
-		this.hotel = hotel;
-	}
 
-	public int getRatingId() {
-		return ratingId;
-	}
+    public Rating() {
+    }
 
-	public void setRatingId(int ratingId) {
-		this.ratingId = ratingId;
-	}
+    public Rating(int ratingId, int userId, int hotelId, int rating, String feedback, Hotel hotel) {
+        this.ratingId = ratingId;
+        this.userId = userId;
+        this.hotelId = hotelId;
+        this.rating = rating;
+        this.feedback = feedback;
+        this.hotel = hotel;
+    }
 
-	public int getUserId() {
-		return userId;
-	}
+    // Getters and Setters
+    public int getRatingId() {
+        return ratingId;
+    }
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    public void setRatingId(int ratingId) {
+        this.ratingId = ratingId;
+    }
 
-	public int getHotelId() {
-		return hotelId;
-	}
+    public int getUserId() {
+        return userId;
+    }
 
-	public void setHotelId(int hotelId) {
-		this.hotelId = hotelId;
-	}
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-	public int getRating() {
-		return rating;
-	}
+    public int getHotelId() {
+        return hotelId;
+    }
 
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+    }
 
-	public String getFeedback() {
-		return feedback;
-	}
+    public int getRating() {
+        return rating;
+    }
 
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
-	}
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
-	public Hotel getHotel() {
-		return hotel;
-	}
+    public String getFeedback() {
+        return feedback;
+    }
 
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
-	}
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
 
-	
-	
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
 }
