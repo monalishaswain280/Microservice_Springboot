@@ -8,11 +8,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import lombok.Builder;
 
 import java.util.*;
 
 @Entity
 @Table(name = "micro_users")
+@Builder
 public class User {
 	
 	@Id
@@ -26,6 +28,18 @@ public class User {
 	public User() {
 		
 	}
+	
+	
+	public User(int id, String userName, String userEmail, String userAbout, List<Rating> ratings) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userAbout = userAbout;
+		this.ratings = ratings;
+	}
+
+
 	public int getId() {
 		return id;
 	}
